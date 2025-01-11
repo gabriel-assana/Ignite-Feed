@@ -1,33 +1,56 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Header } from './components/Header';
+import { Post } from './components/Post';
+import styles from './App.module.css';
+import { SideBar } from './components/SideBar';
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/gabriel-assana.png',
+      name: "Gabriel Assana",
+      role: "Desenvolvedor Front-End"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-06-13 20:42:00'),
+  },
+
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/maykbrito.png',
+      name: "Maik Brito",
+      role: "Instrutor na Rocketseat"
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-06-13 20:44:00'),
+  },
+]
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header></Header>
+      <div className={styles.wrapper}>
+        <SideBar />
+        <main>
+          {posts.map(post => <Post
+            key={post.id}
+            author={post.author}
+            content={post.content}
+            publishedAt={post.publishedAt} />)}
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
