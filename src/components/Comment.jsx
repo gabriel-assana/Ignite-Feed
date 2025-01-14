@@ -23,7 +23,7 @@ export function Commment(props) {
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong>Pedro Miguel</strong>
+              <strong>Gabriel Assana</strong>
               <time
                 title='06 de Junho de 2022 às 15h30'
                 dateTime="2022-06-06 15:33:00"
