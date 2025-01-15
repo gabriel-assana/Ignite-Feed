@@ -1,9 +1,9 @@
 import { Header } from './components/Header';
-import { Post } from './components/Post';
+import { Post, PostType } from './components/Post';
 import styles from './App.module.css';
 import { SideBar } from './components/SideBar';
 
-const posts = [
+const posts: PostType[] = [
   {
     id: 1,
     author: {
@@ -12,9 +12,9 @@ const posts = [
       role: "Desenvolvedor Front-End"
     },
     content: [
-      { type: 'paragraph' as const, content: 'Fala galeraa 👋' },
-      { type: 'paragraph'as const, content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
-      { type: 'link' as const, content: 'jane.design/doctorcare' },
+      { type: 'paragraph' , content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link' , content: 'jane.design/doctorcare' },
     ],
     publishedAt: new Date('2022-06-13 20:42:00'),
   },
@@ -27,9 +27,9 @@ const posts = [
       role: "Instrutor na Rocketseat"
     },
     content: [
-      { type: 'paragraph' as const, content: 'Fala galeraa 👋' },
-      { type: 'paragraph' as const, content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
-      { type: 'link' as const, content: 'jane.design/doctorcare' },
+      { type: 'paragraph' , content: 'Fala galeraa 👋' },
+      { type: 'paragraph' , content: 'Acabei de subir mais um projeto no meu portifólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
     ],
     publishedAt: new Date('2022-06-13 20:44:00'),
   },
@@ -45,9 +45,8 @@ function App() {
         <main>
           {posts.map(post => <Post
             key={post.id}
-            author={post.author}
-            content={post.content}
-            publishedAt={post.publishedAt} />)}
+            post={post}
+           />)}
         </main>
       </div>
     </>
